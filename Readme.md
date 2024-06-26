@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Екатерина Долгова](https://up.htmlacademy.ru/javascript/32/user/2411191).
-* Наставник: `Неизвестно`.
+* Наставник: [Антон Попов](https://htmlacademy.ru/profile/joker).
 
 ---
 
