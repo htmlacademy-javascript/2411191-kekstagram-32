@@ -12,3 +12,4 @@ function checkPalindromy (length) {
   return length.split('').reverse().join('') === length;
 }
 checkPalindromy('дед');
+
