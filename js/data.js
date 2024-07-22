@@ -35,8 +35,8 @@ function checkLength (stringMain, maxLength) {
 checkLength(10,15);
 
 
-function checkPalindromy (stringMain) {
-  return length.split('').reverse().join('') === stringMain;
+function checkPalindromy (stringData) {
+  return stringData.split('').reverse().join('') === stringData;
 }
 checkPalindromy('дед');
 
