@@ -26,11 +26,7 @@ const DESCRIPTION = [
 ];
 
 function checkLength (stringMain, maxLength) {
-  if (stringMain <= maxLength) {
-    return true;
-  }else {
-    return false;
-  }
+  return stringMain <= maxLength;
 }
 checkLength(10,15);
 
@@ -92,7 +88,7 @@ const createPicture = (index) => ({
   url: `photos/${index}.jpg`,
   description: getRandomArrayElement(DESCRIPTION),
   likes: getRandomInteger(LIKE_MAX_COUNT, LIKE_MIN_COUNT) ,
-  comments:Array.from (
+  comments: Array.from (
     {length: getRandomInteger(COMMENT_MAX_COUNT, COMMENT_MIN_COUNT)},
     createComment
   )
@@ -100,11 +96,11 @@ const createPicture = (index) => ({
 
 
 const getPictures = function(){
-  return Array.from ({
-    length: PICTURE_COUNT},(_, index) => createPicture(index + 1)
+  return Array.from ({length: PICTURE_COUNT},(_, index) => createPicture(index + 1)
   );
 
 };
+
 getPictures();
 
-export {PICTURE_COUNT, LIKE_MAX_COUNT, LIKE_MIN_COUNT,AVATAR_MIN_COUNT, AVATAR_MAX_COUNT, COMMENT_LINES, COMMENT_MAX_COUNT, COMMENT_MIN_COUNT, NAMES};
+export{getPictures};
