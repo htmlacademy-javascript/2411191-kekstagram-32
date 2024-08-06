@@ -1,3 +1,4 @@
+import { getRandomArrayElement, getRandomInteger, createIdGenerator } from './util.js';
 const PICTURE_COUNT = 25;
 const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
@@ -25,16 +26,16 @@ const DESCRIPTION = [
   'с днем рожденьем меня!!!  #happybirthdaytome',
 ];
 
-function checkLength (stringMain, maxLength) {
-  return stringMain <= maxLength;
-}
-checkLength(10,15);
+// function checkLength (stringMain, maxLength) {
+//   return stringMain <= maxLength;
+// }
+// checkLength(10,15);
 
 
-function checkPalindromy (stringData) {
-  return stringData.split('').reverse().join('') === stringData;
-}
-checkPalindromy('дед');
+// function checkPalindromy (stringData) {
+//   return stringData.split('').reverse().join('') === stringData;
+// }
+// checkPalindromy('дед');
 
 
 // Структура каждого объекта должна быть следующей:
@@ -49,58 +50,38 @@ checkPalindromy('дед');
 
 // comments, массив объектов — список комментариев, оставленных другими пользователями к этой фотографии. Количество комментариев к каждой фотографии — случайное число от 0 до 30. Все комментарии генерируются случайным образом. Пример описания объекта с комментарием:
 
+const generateCommentId = createIdGenerator();
 
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a,b));
-  const upper = Math.floor(Math.max(a,b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return result;
-};
-
-
-const getRandomArrayElement = (items) => items[getRandomInteger(0, items.length - 1)];
-
-const createIdGenerator = ()=> {
-  let numberId = 0;
-  return () => {
-    numberId += 1;
-    return numberId;
-  };
-};
-
-
-const generateRandomId = createIdGenerator();
 
 const createMessage = () => Array.from (
-  {length: getRandomInteger(1,2)},
+  {length: getRandomInteger(1, 2) },
   () => getRandomArrayElement(COMMENT_LINES),
-);
+).join('');
 
 const createComment = () => ({
-  id: generateRandomId(),
+  id: generateCommentId(),
   avatar: `img/avatar-${getRandomInteger(AVATAR_MAX_COUNT, AVATAR_MIN_COUNT)}.svg`,
   message: createMessage(),
   name: getRandomArrayElement(NAMES),
 });
 
 const createPicture = (index) => ({
-  id : generateRandomId(),
+  id : index,
   url: `photos/${index}.jpg`,
   description: getRandomArrayElement(DESCRIPTION),
   likes: getRandomInteger(LIKE_MAX_COUNT, LIKE_MIN_COUNT) ,
   comments: Array.from (
     {length: getRandomInteger(COMMENT_MAX_COUNT, COMMENT_MIN_COUNT)},
     createComment
-  )
+  ),
 });
 
 
-const getPictures = function(){
-  return Array.from ({length: PICTURE_COUNT},(_, index) => createPicture(index + 1)
-  );
-
-};
+const getPictures = () => Array.from (
+  {length: PICTURE_COUNT},
+  (_, index) => createPicture(index + 1)
+);
 
 getPictures();
 
-export{getPictures};
+export {getPictures};
