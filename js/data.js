@@ -26,17 +26,6 @@ const DESCRIPTION = [
   'с днем рожденьем меня!!!  #happybirthdaytome',
 ];
 
-// function checkLength (stringMain, maxLength) {
-//   return stringMain <= maxLength;
-// }
-// checkLength(10,15);
-
-
-// function checkPalindromy (stringData) {
-//   return stringData.split('').reverse().join('') === stringData;
-// }
-// checkPalindromy('дед');
-
 
 // Структура каждого объекта должна быть следующей:
 
