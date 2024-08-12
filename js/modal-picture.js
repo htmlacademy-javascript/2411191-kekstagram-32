@@ -69,4 +69,4 @@ const openModalPicture = (data) => {
   renderComments(data.comments);
 };
 
-export { openModalPicture };
+export { openModalPicture, onDocumentKeydown };
